@@ -26,7 +26,7 @@ const Register = () => {
     foodPreference: "",
     allergies: "",
     medications: "",
-    medicalHistory:"",
+    medicalHistory: "",
     goals: {
       goalType: "",
     },
@@ -44,18 +44,26 @@ const Register = () => {
         ...prev,
         goals: { ...prev.goals, [id]: value },
       }));
-    }else if (id === "height" || id === "weight" || id === "neck" || id === "waist") {
+    } else if (
+      id === "height" ||
+      id === "weight" ||
+      id === "neck" ||
+      id === "waist"
+    ) {
       setCredentials((prev) => ({
         ...prev,
         personalInformation: { ...prev.personalInformation, [id]: value },
-      }));}
-      else if (id === "allergies" || id === "medications" || id === "medicalHistory") {
-        setCredentials((prev) => ({
-          ...prev,
-          [id]: value,
-        }));}
-     
-    else {
+      }));
+    } else if (
+      id === "allergies" ||
+      id === "medications" ||
+      id === "medicalHistory"
+    ) {
+      setCredentials((prev) => ({
+        ...prev,
+        [id]: value,
+      }));
+    } else {
       setCredentials((prev) => ({ ...prev, [id]: value }));
     }
   };
@@ -86,7 +94,8 @@ const Register = () => {
   };
 
   return (
-    <div className="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
+    <div className="h-full bg-blue-50 w-full">
+    <div className="h-full bg-blue-50 w-full  px-4">
       <div className="flex flex-col items-center justify-center">
         <img src={logo} alt="Panda" className="w-32 h-32" />
         {error && (
@@ -330,7 +339,6 @@ const Register = () => {
                 type="number"
                 id="waist"
                 value={credentials.personalInformation.waist}
-                
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
@@ -459,6 +467,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

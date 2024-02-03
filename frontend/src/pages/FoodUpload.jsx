@@ -3,6 +3,7 @@ import React, { useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import { saveAs } from "file-saver";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 const saveImage = (imageData, path) => {
   // Convert the base64 image data to a Blob
@@ -29,12 +30,13 @@ const base64ToBlob = (base64Data) => {
 
 const FoodUpload = () => {
   const [image, setImagePath] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
   const [pythonOutput2, setPythonOutput2] = useState("");
   const [pythonError2, setPythonError2] = useState("");
   const [servingQuantity, setServingQuantity] = useState("");
   const [dish_name, setdish_name] = useState("");
-
+  const [saved, setSaved] = useState(false);
   const webcamRef = React.useRef(null);
 
   const openCamera = () => {
@@ -85,7 +87,7 @@ const FoodUpload = () => {
   const handleSave = async () => {
     // You can make another axios request here to run the second Python script
     // and display the final output.
-
+    setLoading(true)
     try {
       console.log(dish_name);
       console.log(servingQuantity);
@@ -115,11 +117,14 @@ const FoodUpload = () => {
       }
       // localStorage.setItem('foodId', foodId);
       // Assuming your backend returns the final output
+      setSaved(true);
       setPythonOutput2(saveResponse.data.finalOutput);
       setPythonError2("");
     } catch (error) {
       setPythonOutput2("");
       setPythonError2("An error occurred while saving the meal.");
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -182,6 +187,14 @@ const FoodUpload = () => {
           Save
         </button>
       </div>
+      {loading && <p>Loading...</p>}
+      {!loading && saved && (
+        <Link to="/AddFood">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2">
+            Go to AddFood
+          </button>
+        </Link>
+      )}
     </div>
   );
 };
