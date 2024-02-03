@@ -15,15 +15,18 @@ const Register = () => {
     password: "",
     gender: "",
     dob: "",
-    height: "",
-    weight: "",
-    neck: "",
-    waist: "",
-    hip: "",
+    personalInformation: {
+      height: "",
+      weight: "",
+      neck: "",
+      waist: "",
+      hip: "",
+    },
     activityLevel: "",
-    dietaryPreference: "",
+    foodPreference: "",
     allergies: "",
     medications: "",
+    medicalHistory:"",
     goals: {
       goalType: "",
     },
@@ -41,7 +44,18 @@ const Register = () => {
         ...prev,
         goals: { ...prev.goals, [id]: value },
       }));
-    } else {
+    }else if (id === "height" || id === "weight" || id === "neck" || id === "waist") {
+      setCredentials((prev) => ({
+        ...prev,
+        personalInformation: { ...prev.personalInformation, [id]: value },
+      }));}
+      else if (id === "allergies" || id === "medications" || id === "medicalHistory") {
+        setCredentials((prev) => ({
+          ...prev,
+          [id]: value,
+        }));}
+     
+    else {
       setCredentials((prev) => ({ ...prev, [id]: value }));
     }
   };
@@ -213,6 +227,7 @@ const Register = () => {
                 <input
                   type="number"
                   id="height"
+                  value={credentials.personalInformation.height}
                   onChange={handleChange}
                   className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 />
@@ -228,6 +243,7 @@ const Register = () => {
                 <input
                   type="number"
                   id="weight"
+                  value={credentials.personalInformation.weight}
                   onChange={handleChange}
                   className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 />
@@ -313,6 +329,8 @@ const Register = () => {
               <input
                 type="number"
                 id="waist"
+                value={credentials.personalInformation.waist}
+                
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
@@ -325,6 +343,7 @@ const Register = () => {
               <input
                 type="number"
                 id="neck"
+                value={credentials.personalInformation.neck}
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
@@ -337,6 +356,7 @@ const Register = () => {
               <input
                 type="number"
                 id="hip"
+                value={credentials.personalInformation.hip}
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
@@ -351,17 +371,18 @@ const Register = () => {
                 Dietary Preference
               </label>
               <select
-                id="dietaryPreference"
+                id="foodPreference"
+                value={credentials.foodPreference}
                 onChange={handleChange}
                 className="bg-gray-200 border text-gray-700 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 pr-10 py-2 sm:text-sm"
               >
-                <option value="" id="dietaryPreference">
+                <option value="" id="foodPreference">
                   Select Dietary Preference
                 </option>
-                <option value="Veg" id="dietaryPreference">
+                <option value="Veg" id="foodPreference">
                   Vegetarian
                 </option>
-                <option value="NonVeg" id="dietaryPreference">
+                <option value="NonVeg" id="foodPreference">
                   Non-vegetarian
                 </option>
               </select>
@@ -374,6 +395,7 @@ const Register = () => {
               <input
                 type="text"
                 id="allergies"
+                value={credentials.allergies}
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
@@ -386,6 +408,7 @@ const Register = () => {
               <input
                 type="text"
                 id="medications"
+                value={credentials.medications}
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
@@ -397,7 +420,8 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                id="hereditaryHistory"
+                id="medicalHistory"
+                value={credentials.medicalHistory}
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />

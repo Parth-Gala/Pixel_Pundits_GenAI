@@ -26,7 +26,13 @@ export const register = async (req, res, next) => {
       activityLevel: req.body.activityLevel,
       goals: {
         goalType: req.body.goals.goalType,
-      }
+      },
+      foodPreference:req.body.foodPreference,
+      allergies:req.body.allergies,
+      medications:req.body.medications,
+      medicalHistory:req.body.medicalHistory
+
+
     });
     await newUser.save();
     res.status(200).send("User registered successfully");

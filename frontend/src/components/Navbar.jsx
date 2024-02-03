@@ -8,7 +8,7 @@ import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 import { RiAccountCircleFill } from "react-icons/ri";
 import Cookies from "js-cookie";
-import { IoMdNotifications } from "react-icons/io";
+// import { IoMdNotifications } from "react-icons/io";
 import { BiSolidHelpCircle } from "react-icons/bi";
 // import {
 //   AiFillCloseCircle,

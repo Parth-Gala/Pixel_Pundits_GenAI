@@ -60,14 +60,14 @@ const userSchema = new mongoose.Schema({
     required: [true, "Activity level is mandatory"],
   },
   allergies: {
-    type: [String],
+    type: String,
   },
   medicalHistory:{
-    type: [String],
+    type: String,
   },
   medications: 
   {
-    type: [String],
+    type: String,
   },
   foodPreference: {
     type: String,
@@ -79,9 +79,11 @@ const userSchema = new mongoose.Schema({
     },
     targetWeight: {
       type: Number,
+      default:0,
     },
     targetCalories: {
       type: Number,
+      default:0,
     },
   },
   streak: {
