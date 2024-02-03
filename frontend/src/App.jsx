@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import FoodUpload from "./pages/FoodUpload.jsx";
 const App = () => {
   const location = useLocation();
   const hideNavbarOnLogin =
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/FoodUpload" element={<FoodUpload />} />
         </Routes>
       </div>
     </div>
