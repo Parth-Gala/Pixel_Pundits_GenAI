@@ -118,3 +118,33 @@ export const getFoodNutrition = async (req, res, next) => {
         next(error);
     }
 };
+export const identifyFood = async (req, res, next) => {
+    try {
+      const { foodname, servingsize } = req.body;
+      const pythonScript = "./python/foodidentify.py";
+      const args = [foodname, servingsize];
+      const pythonProcess = spawn("python", [pythonScript, ...args]);
+  
+      let output = "";
+      let error = "";
+  
+      pythonProcess.stdout.on("data", (data) => {
+        output += data.toString();
+      });
+  
+      pythonProcess.stderr.on("data", (data) => {
+        error += data.toString();
+      });
+  
+      pythonProcess.on("close", (code) => {
+        console.log("Python process exited with code", code);
+        if (code === 0) {
+          res.json({ output });
+        } else {
+          res.status(500).json({ error });
+        }
+      });
+    } catch (error) {
+      next(error);
+    }
+  };

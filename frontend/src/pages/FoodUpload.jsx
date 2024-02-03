@@ -42,7 +42,7 @@ const FoodUpload = () => {
 
     const imageSrc = webcamRef.current.getScreenshot();
     const filename = `captured_image_${timestamp}.png`;
-    const imagePath = `C:/Users/parth/Desktop/HeAlthIfy/Pixel_Pundits_GenAI/frontend/imagestore/${filename}`;
+    const imagePath = `C:/datathon/Pixel_Pundits_GenAI/frontend/src/assets${filename}`;
     saveImage(imageSrc, imagePath);
     setImagePath(imagePath);
     console.log(imagePath);

@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import FoodUpload from "./pages/FoodUpload.jsx";
+import AddMeal from "./pages/AddMeal.jsx";
 const App = () => {
   const location = useLocation();
   const hideNavbarOnLogin =
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/FoodUpload" element={<FoodUpload />} />
+          <Route path="/AddMeal" element ={<AddMeal/>}/>
         </Routes>
       </div>
     </div>

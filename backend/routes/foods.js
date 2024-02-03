@@ -1,7 +1,12 @@
-import express from 'express';
-import { addFood, getFoods, getFoodNutrition } from '../controllers/food.js';
+import express from "express";
+import {
+  addFood,
+  getFoods,
+  getFoodNutrition,
+  identifyFood,
+} from "../controllers/food.js";
 
-const router = express.Router()
+const router = express.Router();
 
 router.post("/addFood", addFood);
 
@@ -13,5 +18,7 @@ router.get("/", getFoods);
 
 //Get Food Nutritional Content
 router.get("/nutrition", getFoodNutrition);
+
+router.post("/identifyFood", identifyFood);
 
 export default router;
