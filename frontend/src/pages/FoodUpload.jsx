@@ -3,7 +3,7 @@ import React, { useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import { saveAs } from "file-saver";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+
 
 const saveImage = (imageData, path) => {
   // Convert the base64 image data to a Blob

@@ -20,7 +20,7 @@ const Register = () => {
       weight: "",
       neck: "",
       waist: "",
-      hip: "",
+      
     },
     activityLevel: "",
     foodPreference: "",
@@ -94,19 +94,31 @@ const Register = () => {
   };
 
   return (
-    <div className="h-full bg-blue-50 w-full">
-    <div className="h-full bg-blue-50 w-full  px-4">
-      <div className="flex flex-col items-center justify-center">
+    <div
+      style={{
+        backgroundColor: "#D1EDF2",
+        height: "720px",
+        overflow: "hidden",
+      }}
+      className=" w-full  px-4"
+    >
+      <div
+        style={{ marginBottom: "40px" }}
+        className="flex flex-col items-center justify-center"
+      >
         <img src={logo} alt="Panda" className="w-32 h-32" />
         {error && (
           <span className="text-red-500 text-center">{error.message}</span>
         )}
-        <div className="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10 ">
+        <div
+          style={{ marginTop: "30px" }}
+          className="bg-white rounded-xl shadow-lg lg:w-1/3 md:w-1/2 w-full p-10 "
+        >
           {step === 1 && (
             <div>
               <label
                 id="username"
-                class="text-sm font-medium leading-none text-gray-800"
+                className="text-sm font-medium leading-none text-gray-800"
               >
                 Name
               </label>
@@ -355,19 +367,7 @@ const Register = () => {
                 onChange={handleChange}
                 className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
               />
-              <label
-                className="block text-sm font-medium leading-none text-gray-800"
-                htmlFor="hip"
-              >
-                Hip (in cm)
-              </label>
-              <input
-                type="number"
-                id="hip"
-                value={credentials.personalInformation.hip}
-                onChange={handleChange}
-                className="bg-gray-200 border rounded text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
-              />
+              
             </div>
           )}
           {step === 4 && (
@@ -467,7 +467,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
