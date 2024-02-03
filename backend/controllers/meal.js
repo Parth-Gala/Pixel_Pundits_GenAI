@@ -1,6 +1,5 @@
-import Meal from '../models/Meal.js';
-// import FoodItem from '../models/FoodItem';
-// import { createError } from "../utils/error.js";
+import Meal from "../models/meal.js";
+
 export const addMeal = async (req, res) => {
   const newMeal = new Meal(req.body);
     try {

@@ -19,13 +19,13 @@ export const addFood = async (req, res) => {
         allergens: req.body.allergens,
         tags: req.body.tags,
       });
+      
     try {
         await newFood.save();
         const foodId = newFood._id;
-        res.status(201).json(newFood, foodId);
-
+        res.status(201).json({ food: newFood, foodId});
     } catch (error) {
-        return next(createError(401, error.message));
+        next(createError(401, error.message));
     }
 };
 

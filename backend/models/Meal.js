@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const mealSchema = new mongoose.Schema(
   {
     name: {
-      type: String, //lunch breakfast dinner
+      type: String, 
       required: true,
     },
     foods:{

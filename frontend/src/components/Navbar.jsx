@@ -22,7 +22,11 @@ const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
 
   const usernameCookie = Cookies.get("username");
-
+  const handleLogout = () => {
+    Cookies.remove("username");
+    dispatch({ type: "LOGOUT" });
+    console.log("logout clicked");
+  };
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -52,6 +56,10 @@ const Navbar = () => {
         </Link>
       </div>
       <div>
+        {user ? (
+        <div>
+
+       
         <ul className="hidden md:inline-flex items-center gap-10 mr-4">
           <li>
             <CustomLink to="/"></CustomLink>
@@ -68,9 +76,6 @@ const Navbar = () => {
               Help
             </CustomLink>
           </li>
-          {
-          user ? 
-           (
           <div className=" ">
             <div
               className=" font-semibold hover:text-designColor cursor-pointer flex flex-row items-center"
@@ -92,23 +97,14 @@ const Navbar = () => {
                   <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
                     Settings
                   </li>
-                  <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
+                  <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600" onClick={handleLogout}>
                     Logout
                   </li>
                 </ul>
               </div>
             )}
           </div>
-         ) : ( 
-          <>
-            <li className=" bg-blue-300 rounded-2xl p-2 text-base font-normal text-gray-700 tracking-wide cursor-pointer hover:text-black hover:border-black hover:border-[1px] duration-200">
-              <CustomLink to="/register">Register</CustomLink>
-            </li>
-            <li className="border-[1px] border-designColor rounded-2xl p-2 text-base font-normal text-gray-400 tracking-wide cursor-pointer hover:text-designColor hover:border-black hover:border-[1px] duration-300">
-              <CustomLink to="/login">Login</CustomLink>
-            </li>
-          </>
-         )} 
+      
         </ul>
         <span
           onClick={() => setShowMenu(!showMenu)}
@@ -193,6 +189,17 @@ const Navbar = () => {
               </p>
             </div>
           </div>
+        )}
+       </div>
+        ):(
+          <ul className=" hidden md:inline-flex items-center gap-10 mr-4">
+          <li className=" bg-blue-300 rounded-2xl p-2 text-base font-normal text-gray-700 tracking-wide cursor-pointer hover:text-black hover:border-black hover:border-[1px] duration-200">
+            <CustomLink to="/register">Register</CustomLink>
+          </li>
+          <li className="border-[1px] border-designColor rounded-2xl p-2 text-base font-normal text-gray-400 tracking-wide cursor-pointer hover:text-designColor hover:border-black hover:border-[1px] duration-300">
+            <CustomLink to="/login" >Login</CustomLink>
+          </li>
+          </ul>
         )}
       </div>
     </div>
