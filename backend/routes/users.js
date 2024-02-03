@@ -12,7 +12,7 @@ router.put("/:id", verifyUser, updateUser);
 router.delete("/:id",verifyUser, deleteUser);
 
 //Get
-router.get("/:id",verifyUser, getUser);
+router.get("/:name", getUser);
 
 //Get All
 router.get("/", getUsers);
