@@ -17,7 +17,7 @@ router.post("/addFood", addFood);
 router.get("/", getFoods);
 
 //Get Food Nutritional Content
-router.get("/nutrition", getFoodNutrition);
+router.post("/nutrition", getFoodNutrition);
 
 router.post("/identifyFood", identifyFood);
 
