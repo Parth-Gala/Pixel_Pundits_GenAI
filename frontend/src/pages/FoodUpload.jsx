@@ -2,6 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import Webcam from 'react-webcam';
 import { saveAs } from 'file-saver';
+import { isMobile } from 'react-device-detect';
 
 const saveImage = (imageData, path) => {
   // Convert the base64 image data to a Blob
@@ -10,6 +11,7 @@ const saveImage = (imageData, path) => {
   // Save the Blob to the specified path using FileSaver.js
   saveAs(blob, path);
 };
+
 
 // Helper function to convert base64 to Blob
 const base64ToBlob = (base64Data) => {
@@ -34,6 +36,20 @@ const FoodUpload = () => {
 
   const openCamera = () => {
     setShowCamera(true);
+    const facingMode = isMobile ? 'user' : 'environment';
+    const constraints = {
+      video: {
+        facingMode,
+      },
+    };
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      webcamRef.current.video.srcObject = stream;
+    })
+    .catch((error) => {
+      console.error('Error accessing camera:', error);
+      setShowCamera(false);
+    });
   };
 
   const capture = useCallback(() => {
@@ -73,7 +89,10 @@ const FoodUpload = () => {
       </button>
       {showCamera && (
         <div>
-          <Webcam ref={webcamRef} />
+          <Webcam ref={webcamRef} 
+          videoConstraints={{
+            facingMode: 'environment',
+          }}/>
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
             onClick={capture}
