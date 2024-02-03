@@ -66,6 +66,7 @@ export const addFood = async (req, res) => {
         ingredients: req.body.ingredients,
         allergens: req.body.allergens,
         tags: req.body.tags,
+        image: req.body.image,
       });
     try {
         await newFood.save();

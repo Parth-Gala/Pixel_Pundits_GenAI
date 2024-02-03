@@ -61,6 +61,10 @@ const foodItemSchema = new mongoose.Schema({
     tags: [{
         type: String,
     }],
+    image: {
+        type: String,
+        default: "",
+    },
 });
 
 export default mongoose.model('FoodItem', foodItemSchema);
