@@ -35,12 +35,13 @@ const AuthReducer = (state, action) => {
         error: null,
       };
     case "REGISTER_SUCCESS":
+     
     case "LOGIN_SUCCESS":
-      return{
+      return {
         ...state,
-        user:action.payload,
-        error:null,
-      }
+        user: action.payload,
+        error: null,
+      };
     default:
       return state;
   }
@@ -49,9 +50,9 @@ const AuthReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  useEffect(()=>{
-    localStorage.setItem("user",JSON.stringify(state.user))
-  },[state.user]);
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
 
   return (
     <AuthContext.Provider
@@ -61,7 +62,8 @@ export const AuthContextProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         dispatch,
-      }}>
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
