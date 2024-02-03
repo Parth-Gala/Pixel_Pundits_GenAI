@@ -6,14 +6,10 @@ const mealSchema = new mongoose.Schema(
       type: String, //lunch breakfast dinner
       required: true,
     },
-    foods: [
-      {
-        food: {
-          type: mongoose.Schema.Types.ObjectId,
+    foods:{
+          type: [mongoose.Schema.Types.ObjectId],
           ref: "FoodItem",
         },
-      },
-    ],
     totalCalories: {
       type: Number,
       default: 0,

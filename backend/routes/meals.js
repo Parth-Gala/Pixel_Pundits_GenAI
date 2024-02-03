@@ -1,10 +1,11 @@
 import express from 'express';
 // import { addMeal, updateMeal, deleteMeal, getMeal } from '../controllers/meals.js';
-
+import {addMeal} from '../controllers/meal.js';
 
 const router = express.Router()
 
-// router.post("/register", addMeal);
+router.post("/addMeal", addMeal);
+
 // // Update
 // router.put("/:id", updateMeal);
 
