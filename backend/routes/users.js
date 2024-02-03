@@ -17,7 +17,4 @@ router.get("/:id",verifyUser, getUser);
 //Get All
 router.get("/", getUsers);
 
-//Get User Diet Recommendation
-router.get("/recommendation", verifyUser, getUserRecommendation);
-
 export default router;

@@ -105,6 +105,10 @@ const userSchema = new mongoose.Schema({
       ],
     },
   ],
+  dietRecommendation: {
+    type: mongoose.Schema.Types.Mixed,
+    default: { update: "Yes Please"}
+  }
 });
 
 userSchema.pre("save", function (next) {

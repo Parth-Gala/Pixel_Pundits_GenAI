@@ -7,6 +7,7 @@ import authRoute from "./routes/auth.js";
 import session from "express-session";
 import foodRoute from "./routes/foods.js";
 import mealRoute from "./routes/meals.js";
+import aiDietRoute from "./routes/aidiets.js";
 
 import cors from "cors";
 
@@ -39,6 +40,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute );
 app.use("/api/foods", foodRoute);
 app.use("/api/meals", mealRoute);
+app.use("/api/ai", aiDietRoute);
 
 app.use((err, req, res, next)=>{
     const errorStatus = err.status || 500;
