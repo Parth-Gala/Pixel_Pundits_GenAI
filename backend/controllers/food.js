@@ -4,9 +4,9 @@ import { spawn } from "child_process";
 
 function parseFoodNutrition(text, foodName, servingSize) {
   // Initialize an empty object to store the parsed data
-  console.log(text);
-  const startIndex = text.indexOf("##TABLE START") + "##TABLE START".length;
-  const endIndex = text.indexOf("##TABLE END");
+//   console.log(text);
+  const startIndex = text.indexOf("## TABLE START") + "## TABLE START".length;
+  const endIndex = text.indexOf("## TABLE END");
 
   if (startIndex !== -1 && endIndex !== -1) {
     const tableText = text.substring(startIndex, endIndex).trim();
@@ -96,7 +96,7 @@ export const getFoods = async (req, res) => {
 export const getFoodNutrition = async (req, res, next) => {
   try {
     const { foodname, servingsize } = req.body;
-    console.log(foodname);
+    // console.log(foodname);
     const pythonScript = "./python/foodinfo.py";
     const args = [foodname, servingsize];
     const pythonProcess = spawn("python", [pythonScript, ...args]);
@@ -112,11 +112,36 @@ export const getFoodNutrition = async (req, res, next) => {
       error += data.toString();
     });
 
-    pythonProcess.on("close", (code) => {
+    pythonProcess.on("close", async (code) => {
       console.log("Python process exited with code", code);
       if (code === 0) {
         const foodJSON = parseFoodNutrition(output, foodname, servingsize);
-        res.json({ foodJSON });
+        console.log(foodJSON);
+        const newFood = new FoodItem({
+            name: foodJSON.name,
+            servingSize: foodJSON.servingSize,
+            macronutrients: {
+              calories: foodJSON.macronutrients.calories,
+              protein: foodJSON.macronutrients.protein,
+              carbs: foodJSON.macronutrients.carbs,
+              fat: {
+                total: foodJSON.macronutrients.fat.total,
+                saturated: foodJSON.macronutrients.fat.saturated,
+                unsaturated: foodJSON.macronutrients.fat.unsaturated,
+              },
+              sugar: foodJSON.macronutrients.sugar,
+              sodium: foodJSON.macronutrients.sodium,
+            },
+            ingredients: foodJSON.ingredients,
+            allergens: foodJSON.allergens,
+          });
+        try {
+            await newFood.save();
+            const foodId = newFood._id;
+            res.status(201).json({ foodId: foodId });
+        } catch (error) {
+            return next(createError(401, error.message));
+        }
       } else {
         res.status(500).json({ error });
       }

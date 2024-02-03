@@ -60,7 +60,7 @@ const FoodUpload = () => {
       data
     );
     console.log(response.data.output);
-    setdish_name(response.data.output);
+    setdish_name(response.data.output.split('Dish : ')[1].trim());
     // console.log(response.data);
     // const lines = response.data.output.split("\n");
     // const dishLine = lines.find((line) => line.includes("Dish:"));
@@ -97,7 +97,23 @@ const FoodUpload = () => {
         "http://localhost:5000/api/foods/nutrition",
         data
       );
-      console.log(saveResponse.data);
+      // console.log(saveResponse.data.foodId);
+      const foodId = saveResponse.data.foodId;
+      console.log(localStorage.getItem('foodId'));
+      if(localStorage.getItem('foodId')){
+        let foodIdArr = JSON.parse(localStorage.getItem('foodId'));
+        console.log(foodIdArr);
+        foodIdArr.push(foodId);
+        console.log(foodIdArr);
+        localStorage.setItem('foodId', JSON.stringify(foodIdArr));
+      }
+      else {
+        let foodIdArr = []
+        foodIdArr.push(foodId);
+        console.log(JSON.stringify(foodIdArr));
+        localStorage.setItem('foodId', JSON.stringify(foodIdArr));
+      }
+      // localStorage.setItem('foodId', foodId);
       // Assuming your backend returns the final output
       setPythonOutput2(saveResponse.data.finalOutput);
       setPythonError2("");
