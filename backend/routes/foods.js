@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addFood,
+  getFoodInfo,
   getFoods,
   getFoodNutrition,
   identifyFood,
@@ -11,7 +12,7 @@ const router = express.Router();
 router.post("/addFood", addFood);
 
 //Get
-// router.get("/:id", getFood);
+router.post("/getInfo", getFoodInfo);
 
 //Get All
 router.get("/", getFoods);

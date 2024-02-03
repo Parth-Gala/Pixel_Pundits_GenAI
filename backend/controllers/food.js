@@ -86,12 +86,21 @@ export const addFood = async (req, res) => {
 
 export const getFoods = async (req, res) => {
   try {
-    const foods = await FoodItem.findById(req.param.id);
+    const foods = await FoodItem.find();
     res.status(200).json(foods);
   } catch (error) {
     res.status(404).json(createError(402, error.message));
   }
 };
+
+export const getFoodInfo = async (req, res) => {
+try {
+    const foods = await FoodItem.findById(req.body.food_id);
+    res.status(200).json(foods);
+    } catch (error) {
+    res.status(404).json(createError(402, error.message));
+    }
+}
 
 export const getFoodNutrition = async (req, res, next) => {
   try {
