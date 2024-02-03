@@ -12,7 +12,7 @@ const App = () => {
   const hideNavbarOnLogin =
     location.pathname === "/login" || location.pathname === "/register";
   return (
-    <div className=" mx-1">
+    <div className="px-1">
       {!hideNavbarOnLogin && <Navbar />}
       <div className="">
         <Routes>

@@ -53,7 +53,7 @@ const Navbar = () => {
         </Link>
         <Link to="/" className=" inline">
           <p className=" mdl:text-4xl text-designColor text-2xl">
-            he<span>A</span>lth<span>I</span>fy
+            He<span className=" text-red-600 font-semibold">A</span>lth<span className=" text-red-600 font-serif font-semibold">I</span>fy
           </p>
         </Link>
       </div>
@@ -63,7 +63,7 @@ const Navbar = () => {
           {user ? (
             <span
             onClick={() => setShowMenu(!showMenu)}
-            className="text-3xl  md:hidden bg-black w-14 h-14 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer"
+            className="text-3xl  md:hidden w-14 h-14 inline-flex items-center justify-center rounded-full text-designColor cursor-pointer"
             >
           <FiMenu />
         </span>
@@ -136,12 +136,12 @@ const Navbar = () => {
                   <div>
                     <div className="flex flex-row  gap-4 items-center">
                       <img src={logo} alt="logo" className=" w-16 h-16" />
-                      <p className=" text-2xl text-designColor">Max</p>
+                      <p className=" mdl:text-4xl text-white text-2xl">
+            He<span className=" text-red-600 font-semibold">A</span>lth<span className=" text-red-600 font-serif font-semibold">I</span>fy
+          </p>
                     </div>
                     <p className="text-sm text-gray-400 mt-2 pt-6 border-t-[1px] border-t-gray-600">
-                      We are committed to delivering the finest courses,
-                      treating students with utmost reverence, and offering
-                      top-notch courses at affordable prices.
+                    We are dedicated to providing the most comprehensive nutritional guidance, treating our users with the highest respect, and delivering exceptional content at accessible rates
                     </p>
                   </div>
                   <ul className="flex flex-col gap-4 pl-4 ">
@@ -157,7 +157,7 @@ const Navbar = () => {
                     {showoption && (
                       <ul className="flex flex-col gap-2 p-2">
                         <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
-                          Profile
+                          Edit Profile
                         </li>
                         <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
                           Alerts
