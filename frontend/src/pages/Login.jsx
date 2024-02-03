@@ -37,6 +37,7 @@ const Login = () => {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
 //   console.log(user);
   return (
     <div class="h-full bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4">
@@ -127,11 +128,11 @@ const Login = () => {
             <div class="relative flex items-center justify-center">
               <input
                 id="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 class="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 onChange={handleChange}
               />
-              <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
+              <div class="absolute right-0 mt-2 mr-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                 <svg
                   width="16"
                   height="16"

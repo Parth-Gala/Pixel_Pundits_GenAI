@@ -9,4 +9,3 @@ export const addMeal = async (req, res) => {
       next(error);
     }
   };
-
