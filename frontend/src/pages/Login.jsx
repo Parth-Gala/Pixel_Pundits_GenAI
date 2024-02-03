@@ -31,7 +31,8 @@ const Login = () => {
         credentials
       );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      navigate("/");
+      localStorage.setItem("userinfo", JSON.stringify(res.data));
+      navigate("/dashboard");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err });
     }
