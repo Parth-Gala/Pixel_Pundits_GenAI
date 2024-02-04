@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const SuggestedDiet = () => {
   const userInfo = JSON.parse(localStorage.getItem("userinfo"));
-//   console.log(userInfo);
+  console.log(userInfo);
 //   const dietRecommendation = userInfo.dietRecommendation;
 //   console.log(dietRecommendation);
 const [diet, setDiet] = useState([]);

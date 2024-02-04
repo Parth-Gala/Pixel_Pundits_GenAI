@@ -53,8 +53,8 @@ const AddFood = () => {
   }, []);
 
   return (
-    <div className="container mx-auto my-8 ml-3">
-      <h1 className="text-3xl font-bold text-blue-900 mb-4">Add your meal</h1>
+    <div className="container mx-auto my-8">
+      <h1 className="flex justify-center text-3xl font-bold text-blue-900 mb-4">Add your meal</h1>
 
       <div className="mb-4">
         <label
@@ -72,7 +72,11 @@ const AddFood = () => {
           onChange={handleMealTypeChange}
         />
       </div>
-
+      <div class="w-full flex items-center justify-between p-5">
+        <hr class="w-full bg-gray-400" />
+        <p class="text-base font-medium leading-4 px-2.5 text-gray-400">OR</p>
+        <hr class="w-full bg-gray-400  " />
+      </div>
       {foodData.map((foodItem, index) =>
         foodItem ? (
           <div key={index}>
@@ -85,7 +89,7 @@ const AddFood = () => {
         )
       )}
 
-      <div className="flex items-center mb-4">
+      <div className="flex justify-center items-center mb-4">
         <Link to={`/FoodUpload?mealType=${encodeURIComponent(mealType)}`}>
           <button
             className={`bg-blue-500 text-white px-4 py-2 rounded-md ml-2 ${
@@ -101,7 +105,7 @@ const AddFood = () => {
       </div>
 
       <button
-        className={`bg-green-500 text-white px-6 py-3 rounded-md ${
+        className={`bg-green-500 text-white px-6 py-3 rounded-md  ${
           !photoAdded ? "cursor-not-allowed opacity-50" : ""
         }`}
         onClick={handleSave}
