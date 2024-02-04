@@ -38,7 +38,7 @@ const Login = () => {
         "http://localhost:5000/api/ai/diet",
         data
       )
-      localStorage.setItem("userinfo", JSON.stringify(diet));
+      localStorage.setItem("userinfo", JSON.stringify(res.data));
       navigate("/dashboard");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err });

@@ -13,7 +13,7 @@ import { IoAddCircle } from "react-icons/io5";
 import { Link } from "react-router-dom";
 const Dashboard = () => {
   const datainfo = JSON.parse(localStorage.getItem("userinfo"));
-
+  console.log(datainfo);
   const data = [
     { name: "Category A", value: 100 },
     { name: "Category B", value: 60 * 2 },
