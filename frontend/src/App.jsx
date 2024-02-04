@@ -7,6 +7,7 @@ import Register from "./pages/Register.jsx";
 import FoodUpload from "./pages/FoodUpload.jsx";
 import AddMeal from "./pages/AddMeal.jsx";
 import AddFood from "./pages/AddFood.jsx";
+import SuggestedDiet from "./pages/SuggestedDiet.jsx";
 const App = () => {
   const location = useLocation();
   const hideNavbarOnLogin =
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/FoodUpload" element={<FoodUpload />} />
           <Route path="/AddMeal" element ={<AddMeal/>}/>
           <Route path="/AddFood" element ={<AddFood/>}/>
+          <Route path="/SuggestedDiet" element ={<SuggestedDiet/>}/>
         </Routes>
       </div>
     </div>
