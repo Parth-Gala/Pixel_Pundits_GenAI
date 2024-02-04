@@ -10,13 +10,15 @@ import Breakfast from "../assets/Breakfast.png";
 import Snack from "../assets/Snack.png";
 import { IoAddCircle } from "react-icons/io5";
 // import { useNavigate } from "react-router-dom";
+
+import { FaWalking } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Dashboard = () => {
   const datainfo = JSON.parse(localStorage.getItem("userinfo"));
   console.log(datainfo);
   const data = [
-    { name: "Category A", value: 100 },
-    { name: "Category B", value: 60 * 2 },
+    { name: "Category A", value: 1200 },
+    { name: "Category B", value: 1200 * 2 },
   ];
   const COLORS = ["#8884d8", "#E99630"];
   const calories = 1200;
@@ -105,7 +107,8 @@ const Dashboard = () => {
                     Breakfast
                   </div>
                   <div className="text-gray-600 pl-3">
-                    Description for breakfast
+                    Sev Puri
+                    Gulab-Jamun
                   </div>
                 </div>
               </div>
@@ -123,24 +126,24 @@ const Dashboard = () => {
                     Lunch
                   </div>
                   <div className="text-gray-600 pl-3">
-                    Description for lunch
+                    Steamed Fried Rice
                   </div>
                 </div>
               </div>
 
-              <div className="bg-pink-400 border-r-0 rounded-tr-full m-1 relative ">
+              <div className="bg-pink-400 border-r-0 rounded-tr-full m-1 relative">
                 <div
-                  className="flex flex-col justify-center align-middle items-start border-b-0 border-r-0 border-2 rounded-tr-2xl p-2 overflow-hidden"
+                  className="flex flex-col justify-center align-middle items-start border-b-0 border-r-0 border-2 rounded-tr-2xl p-2 overflow-hidden mr-5"
                   key="lunch"
                 >
                   <div className=" rounded-full h-full w-[60px] mb-1 ">
                     <img src={Snack} alt="Lunch" className="h-full" />
                   </div>
                   <div className="text-gray-600 font-bold capitalize pl-3">
-                    Lunch
+                    Snack
                   </div>
                   <div className="text-gray-600 pl-3">
-                    Description for lunch
+                    Add Meal
                   </div>
                   <div className="absolute -bottom-1 right-10 rounded-full cursor-pointer">
                   <Link to={`/AddFood`}> <button className="text-white text-3xl" ><IoAddCircle /></button></Link>
@@ -150,7 +153,13 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        <div className=" w-full border-2 m-2 mt-4"></div>
 
+<h1 className=" text-blue-500">Connect Your FitBit Now!! </h1>
+<div className=" flex">
+  <DashboardCard title="Distance Walked" value="1.2km" icon={<FaWalking />} />
+  <DashboardCard title="Calories Burned" value="760kcal" icon={<FaFire />} />
+</div>
 
       </div>
     </div>
