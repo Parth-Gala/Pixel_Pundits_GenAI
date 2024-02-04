@@ -82,13 +82,13 @@ const Navbar = () => {
           <div>
             <ul className="hidden md:inline-flex items-center gap-10 mr-4">
               <li>
-                <CustomLink to="/"></CustomLink>
+                <CustomLink to="/Dashboard">Home</CustomLink>
               </li>
               <li>
-                <CustomLink to="/calories">My Learnings</CustomLink>
+                <CustomLink to="/SuggestedDiet">AI Diet</CustomLink>
               </li>
               <li>
-                <CustomLink to="/hotels">Courses</CustomLink>
+                <CustomLink to="/AddFood">Add Meal</CustomLink>
               </li>
               <li>
                 <CustomLink to="/help">
@@ -114,7 +114,6 @@ const Navbar = () => {
                       <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
                         Alerts
                       </li>
-
                       <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
                         Settings
                       </li>
@@ -179,13 +178,13 @@ const Navbar = () => {
                     </li>
 
                     <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
-                      <CustomLink to="/aidiet">Planned Diet</CustomLink>
+                      <CustomLink to="/SuggestedDiet">Planned Diet</CustomLink>
                     </li>
                     <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
-                      <CustomLink to="/hotels">Courses</CustomLink>
+                      <CustomLink to="/AddFood">Add Meal</CustomLink>
                     </li>
                     <li className="text-base font-normal text-gray-500 tracking-wide cursor-pointer hover:text-designColor duration-300 border-b-[1px] border-b-gray-600">
-                      <CustomLink to="/hotels">Help</CustomLink>
+                      <CustomLink to="/help">Help</CustomLink>
                     </li>
                   </ul>
                   <div className="flex flex-col xl:flex-row gap-3  justify-between">
