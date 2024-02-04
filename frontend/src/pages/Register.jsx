@@ -36,13 +36,27 @@ const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
   const handleChange = (e) => {
     const { id, value } = e.target;
 
     if (id === "goalType") {
+      let targetWeight;
+      let targetCalories;
+      if(credentials.goals.goalType === "Weight Loss" || credentials.goals.goalType === "Burn Fat"){
+        targetWeight = getRandomNumber(Number(credentials.personalInformation.weight) - 15, Number(credentials.personalInformation.weight) - 7);
+        targetCalories = getRandomNumber(1500, 1900);
+      }
+      else{
+        targetWeight = getRandomNumber(Number(credentials.personalInformation.weight) + 7, Number(credentials.personalInformation.weight) + 15);
+        targetCalories = getRandomNumber(2250, 3100);
+      }
       setCredentials((prev) => ({
         ...prev,
-        goals: { ...prev.goals, [id]: value },
+        goals: { ...prev.goals, [id]: value,  targetWeight: targetWeight, targetCalories: targetCalories},
       }));
     } else if (
       id === "height" ||
@@ -67,6 +81,27 @@ const Register = () => {
       setCredentials((prev) => ({ ...prev, [id]: value }));
     }
   };
+
+  const setGoals = () => {
+    // let targetWeight;
+    // let targetCalories;
+    // if(credentials.goals.goalType === "Weight Loss" || credentials.goals.goalType === "Burn Fat"){
+    //   targetWeight = getRandomNumber(Number(credentials.personalInformation.weight) - 15, Number(credentials.personalInformation.weight) - 7);
+    //   targetCalories = getRandomNumber(1500, 1900);
+    // }
+    // else{
+    //   targetWeight = getRandomNumber(Number(credentials.personalInformation.weight) + 7, Number(credentials.personalInformation.weight) + 15);
+    //   targetCalories = getRandomNumber(2250, 3100);
+    // }
+
+    // setCredentials((prev) => ({
+    //   ...prev,
+    //   goals: {
+    //     targetWeight:credentials.goals.targetWeight,
+    //     targetCalories: credentials.goals.targetCalories
+    //   }
+    // }));
+  }
 
   const handleClickNext = () => {
     setStep((prevStep) => prevStep + 1);

@@ -35,16 +35,17 @@ def getVideoInfo(foodName):
     # formatMeal(result)
 
 def main():
-    # foodName = sys.argv[1]
-    user_input = "I want to make ...Help me"
+    foodName = sys.argv[1]
+    # user_input = "I want to make ...Help me"
     # print(medicalHistory)
     # getVideoInfo(foodName)
-    dish = get_dish_name(user_input)
+    # dish = get_dish_name(user_input)
     # print(dish)
-    if dish == None:
-        print(user_input)
-    else:
-        getVideoInfo(dish)
+    # if dish == None:
+        # print(user_input)
+    # else:
+        # getVideoInfo(dish)
+    getVideoInfo(foodName);
 
 if __name__ == "__main__":
     main()

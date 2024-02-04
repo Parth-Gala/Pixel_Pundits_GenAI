@@ -21,6 +21,7 @@ function parseMealPlan(mealPlanText) {
 
 export const getRecommendedDiet = async (req, res, next) => {
     try {
+        console.log(req.body.userId);
         const user = await User.findById(req.body.userId);
         const pythonScript = './python/dietrecommend.py';
         const args = [user.personalInformation.weight, user.personalInformation.bmi, user.personalInformation.bodyFat, user.activityLevel, user.allergies, user.medicalHistory, user.medications, user.foodPreference, user.goals.goalType, user.goals.targetCalories, user.goals.targetWeight];

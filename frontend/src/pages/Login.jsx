@@ -31,6 +31,13 @@ const Login = () => {
         credentials
       );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      const data = {
+        "userId": res.data._id,
+      }
+      const diet = await axios.post(
+        "http://localhost:5000/api/ai/diet",
+        data
+      )
       localStorage.setItem("userinfo", JSON.stringify(res.data));
       navigate("/dashboard");
     } catch (err) {
