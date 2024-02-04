@@ -72,11 +72,7 @@ const AddFood = () => {
           onChange={handleMealTypeChange}
         />
       </div>
-      <div class="w-full flex items-center justify-between p-5">
-        <hr class="w-full bg-gray-400" />
-        <p class="text-base font-medium leading-4 px-2.5 text-gray-400">OR</p>
-        <hr class="w-full bg-gray-400  " />
-      </div>
+
       {foodData.map((foodItem, index) =>
         foodItem ? (
           <div key={index}>
@@ -89,7 +85,7 @@ const AddFood = () => {
         )
       )}
 
-      <div className="flex justify-center items-center mb-4">
+      <div className=" mb-4">
         <Link to={`/FoodUpload?mealType=${encodeURIComponent(mealType)}`}>
           <button
             className={`bg-blue-500 text-white px-4 py-2 rounded-md ml-2 ${
