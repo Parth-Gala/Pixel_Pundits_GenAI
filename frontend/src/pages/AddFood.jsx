@@ -7,10 +7,10 @@ const AddFood = () => {
   const [mealType, setMealType] = useState("");
   const [photoAdded, setPhotoAdded] = useState(false);
   const [foodData, setFoodData] = useState([]);
+  const [totalCalories, setTotalCalories] = useState();
 
   const getFoodData = async () => {
     const foodIdArr = JSON.parse(localStorage.getItem("foodId"));
-
     try {
       const responses = await Promise.all(
         foodIdArr.map(async (foodId, index) => {
@@ -21,8 +21,10 @@ const AddFood = () => {
           );
         })
       );
-
       const foodData = responses.map((response) => response.data);
+      // console.log(foodData);
+      setTotalCalories(foodData.reduce((total, food) => total + food.macronutrients.calories, 0));
+      // console.log(totalCalories);
       setFoodData(foodData);
     } catch (error) {
       console.error("Error fetching food data:", error);
@@ -33,15 +35,43 @@ const AddFood = () => {
     setMealType(e.target.value);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     // Your logic to save the mealType and handle the photoAdded state
-    if (photoAdded) {
-      console.log(`Meal Type saved: ${mealType}`);
-      // Reset the mealType state after saving if needed
-      // setMealType('');
-    } else {
-      alert("Please add a photo before saving.");
+    const mealData = {
+      "name": mealType,
+      "foods": JSON.parse(localStorage.getItem("foodId")),
+      "totalCalories": totalCalories,
     }
+    const response = await axios.post(
+      "http://localhost:5000/api/meals/addMeal",
+      mealData
+    );
+    const mealid = response.data;
+
+    const userid = JSON.parse(localStorage.getItem('userinfo'))._id;
+    // console.log(userid);
+    const meals = {
+      "userid": userid,
+      "mealid": mealid.foodId,
+    }
+
+    const res = await axios.post(
+      "http://localhost:5000/api/users/addMeal",
+      meals
+    );
+    console.log(res);
+    // if (localStorage.getItem("mealId")) {
+    //   let mealIdArr = JSON.parse(localStorage.getItem("mealId"));
+    //   console.log(mealIdArr);
+    //   mealIdArr.push(mealId);
+    //   console.log(mealIdArr);
+    //   localStorage.setItem("mealId", JSON.stringify(mealIdArr));
+    // } else {
+    //   let mealIdArr = [];
+    //   mealIdArr.push(mealId);
+    //   console.log(JSON.stringify(mealIdArr));
+    //   localStorage.setItem("mealId", JSON.stringify(mealIdArr));
+    // }
   };
 
   const handlePhotoAdded = () => {
@@ -101,11 +131,10 @@ const AddFood = () => {
       </div>
 
       <button
-        className={`bg-green-500 text-white px-6 py-3 rounded-md ${
-          !photoAdded ? "cursor-not-allowed opacity-50" : ""
+        className={`bg-green-500 text-white px-6 py-3 rounded-md 
         }`}
         onClick={handleSave}
-        disabled={!photoAdded || !mealType} // Disable the button if photo is not added or mealType is empty
+        // disabled={!photoAdded || !mealType} // Disable the button if photo is not added or mealType is empty
       >
         Save
       </button>

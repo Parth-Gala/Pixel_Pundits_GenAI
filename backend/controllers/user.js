@@ -76,3 +76,31 @@ export const getUserRecommendation = async (req, res, next) => {
   }
 };
 
+export const addMeal = async (req, res, next) => {
+  try {
+    const { userid, mealid } = req.body
+    // const userupdate = await User.findByIdAndUpdate(
+    //   userid,
+    //   { $push: { 'dailyMeals.$.meals': mealid } },
+    //   { new: true }
+    // );
+    // if(userupdate) {
+    //   res.status(200).json({ msg: "User Updated Successfully" });
+    // }
+    const user = await User.findById(userid);
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    // user.dailyMeals.forEach(dailyMeal => {
+    //   dailyMeal.meals.push(mealid);
+    // });
+    user.dailyMeals.push({
+      meals: mealid
+    })
+    const userupdate = await user.save();
+    console.log(userupdate);
+    res.status(200).json({ msg: "User Updated Successfully" });
+  } catch (error) {
+    next(error);
+  }
+};

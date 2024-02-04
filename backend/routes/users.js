@@ -1,5 +1,5 @@
 import express from 'express';
-import { updateUser, deleteUser, getUser, getUsers, getUserRecommendation } from '../controllers/user.js';
+import { updateUser, deleteUser, getUser, getUsers, getUserRecommendation, addMeal } from '../controllers/user.js';
 import { verifyUser} from '../utils/verifyToken.js';
 
 
@@ -13,6 +13,8 @@ router.delete("/:id",verifyUser, deleteUser);
 
 //Get
 router.get("/:name", getUser);
+
+router.post("/addMeal", addMeal);
 
 //Get All
 router.get("/", getUsers);

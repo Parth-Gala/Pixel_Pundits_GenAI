@@ -126,7 +126,7 @@ export const getFoodNutrition = async (req, res, next) => {
       if (code === 0) {
         console.log(output);
         const foodJSON = parseFoodNutrition(output, foodname, servingsize);
-        console.log(foodJSON);
+        // console.log(foodJSON);
         const newFood = new FoodItem({
           name: foodJSON.name,
           servingSize: foodJSON.servingSize,
