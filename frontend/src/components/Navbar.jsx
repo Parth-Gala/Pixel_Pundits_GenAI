@@ -25,7 +25,7 @@ const Navbar = () => {
   const handleLogout = () => {
     Cookies.remove("username");
     dispatch({ type: "LOGOUT" });
-    console.log("logout clicked");
+    // console.log("logout clicked");
   };
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
