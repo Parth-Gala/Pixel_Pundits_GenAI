@@ -3,7 +3,7 @@ import React, { useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import { saveAs } from "file-saver";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 
 const saveImage = (imageData, path) => {
   // Convert the base64 image data to a Blob
@@ -38,6 +38,7 @@ const FoodUpload = () => {
   const [dish_name, setdish_name] = useState("");
   const [saved, setSaved] = useState(false);
   const webcamRef = React.useRef(null);
+  const [showLoading, setShowLoading] = useState(false);
 
   const openCamera = () => {
     setShowCamera(true);
@@ -54,25 +55,27 @@ const FoodUpload = () => {
     setImagePath(imagePath);
     console.log(imagePath);
     setShowCamera(false);
+    setShowLoading(true);
     const data = {
       fileName: filename,
     };
-    const response = await axios.post(
-      "http://localhost:5000/api/foods/identifyFood",
-      data
-    );
-    console.log(response.data.output);
-    setdish_name(response.data.output.split('Dish : ')[1].trim());
-    // console.log(response.data);
-    // const lines = response.data.output.split("\n");
-    // const dishLine = lines.find((line) => line.includes("Dish:"));
-
-    // const dishInfo = dishLine ? dishLine.split("Dish:")[1].trim() : "";
-    // const get_dish_name = response.data.output;
+    // setLoading(true)
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/foods/identifyFood",
+        data
+      );
+      console.log(response.data.output);
+      setdish_name(response.data.output.split("Dish : ")[1].trim());
+    } catch (error) {
+      console.error("Error while identifying food:", error);
+    } finally {
+      // Hide loading screen
+      setShowLoading(false);
+    }
   }, [webcamRef]);
 
   const uploadImage = async () => {
-    // Send the captured image to the server
     const response = await fetch("/api/upload", {
       method: "POST",
       headers: {
@@ -82,12 +85,10 @@ const FoodUpload = () => {
     });
 
     const data = await response.json();
-    console.log(data); // Handle the server response accordingly
+    console.log(data);
   };
   const handleSave = async () => {
-    // You can make another axios request here to run the second Python script
-    // and display the final output.
-    setLoading(true)
+    setLoading(true);
     try {
       console.log(dish_name);
       console.log(servingQuantity);
@@ -101,19 +102,18 @@ const FoodUpload = () => {
       );
       // console.log(saveResponse.data.foodId);
       const foodId = saveResponse.data.foodId;
-      console.log(localStorage.getItem('foodId'));
-      if(localStorage.getItem('foodId')){
-        let foodIdArr = JSON.parse(localStorage.getItem('foodId'));
+      console.log(localStorage.getItem("foodId"));
+      if (localStorage.getItem("foodId")) {
+        let foodIdArr = JSON.parse(localStorage.getItem("foodId"));
         console.log(foodIdArr);
         foodIdArr.push(foodId);
         console.log(foodIdArr);
-        localStorage.setItem('foodId', JSON.stringify(foodIdArr));
-      }
-      else {
-        let foodIdArr = []
+        localStorage.setItem("foodId", JSON.stringify(foodIdArr));
+      } else {
+        let foodIdArr = [];
         foodIdArr.push(foodId);
         console.log(JSON.stringify(foodIdArr));
-        localStorage.setItem('foodId', JSON.stringify(foodIdArr));
+        localStorage.setItem("foodId", JSON.stringify(foodIdArr));
       }
       // localStorage.setItem('foodId', foodId);
       // Assuming your backend returns the final output
@@ -123,15 +123,16 @@ const FoodUpload = () => {
     } catch (error) {
       setPythonOutput2("");
       setPythonError2("An error occurred while saving the meal.");
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto my-8">
+    <div className="max-w-md  my-8">
+      {/* <h4>Step 1</h4> */}
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="bg-blue-500 hover:bg-blue-700 text-white  mb-3 font-bold py-2 px-4 ml-3 rounded focus:outline-none focus:shadow-outline"
         onClick={openCamera}
       >
         Open Camera
@@ -152,7 +153,7 @@ const FoodUpload = () => {
           </button>
         </div>
       )}
-      {image && (
+      {/* {image && (
         <div>
           <img src={image} alt="Captured" className="mt-2" />
           <button
@@ -162,11 +163,12 @@ const FoodUpload = () => {
             Upload Image
           </button>
         </div>
-      )}
+      )} */}
       <div>
         <label>
           Serving Quantity (grams):
           <input
+            className=" bg-gray-200 border rounded  text-xs font-medium leading-none ml-2 text-gray-800 py-3 w-2/3 pl-3 mt-2"
             type="number"
             value={servingQuantity}
             onChange={(e) => setServingQuantity(e.target.value)}
@@ -182,18 +184,32 @@ const FoodUpload = () => {
             border: "none",
             borderRadius: "4px",
             marginTop: "10px",
+            marginLeft: "20px",
           }}
         >
-          Save
+          Analyis
         </button>
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && <p>Anayzinggg</p>}
       {!loading && saved && (
         <Link to="/AddFood">
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2">
-            Go to AddFood
+            Save
           </button>
         </Link>
+      )}
+      {showLoading && (
+        <div>
+          <img
+            src={image}
+            alt="Loading..."
+            className="filter blur-sm"
+            style={{ height: "200px", width: "200px" }}
+          />
+          <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black font-bold">
+            Wait while we analaysis your food..
+          </p>
+        </div>
       )}
     </div>
   );

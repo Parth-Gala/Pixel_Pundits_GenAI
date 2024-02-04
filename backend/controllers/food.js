@@ -4,7 +4,7 @@ import { spawn } from "child_process";
 
 function parseFoodNutrition(text, foodName, servingSize) {
   // Initialize an empty object to store the parsed data
-//   console.log(text);
+  //   console.log(text);
   const startIndex = text.indexOf("## TABLE START") + "## TABLE START".length;
   const endIndex = text.indexOf("## TABLE END");
 
@@ -94,13 +94,13 @@ export const getFoods = async (req, res) => {
 };
 
 export const getFoodInfo = async (req, res) => {
-try {
+  try {
     const foods = await FoodItem.findById(req.body.food_id);
     res.status(200).json(foods);
-    } catch (error) {
+  } catch (error) {
     res.status(404).json(createError(402, error.message));
-    }
-}
+  }
+};
 
 export const getFoodNutrition = async (req, res, next) => {
   try {
@@ -124,32 +124,33 @@ export const getFoodNutrition = async (req, res, next) => {
     pythonProcess.on("close", async (code) => {
       console.log("Python process exited with code", code);
       if (code === 0) {
+        console.log(output);
         const foodJSON = parseFoodNutrition(output, foodname, servingsize);
         console.log(foodJSON);
         const newFood = new FoodItem({
-            name: foodJSON.name,
-            servingSize: foodJSON.servingSize,
-            macronutrients: {
-              calories: foodJSON.macronutrients.calories,
-              protein: foodJSON.macronutrients.protein,
-              carbs: foodJSON.macronutrients.carbs,
-              fat: {
-                total: foodJSON.macronutrients.fat.total,
-                saturated: foodJSON.macronutrients.fat.saturated,
-                unsaturated: foodJSON.macronutrients.fat.unsaturated,
-              },
-              sugar: foodJSON.macronutrients.sugar,
-              sodium: foodJSON.macronutrients.sodium,
+          name: foodJSON.name,
+          servingSize: foodJSON.servingSize,
+          macronutrients: {
+            calories: foodJSON.macronutrients.calories,
+            protein: foodJSON.macronutrients.protein,
+            carbs: foodJSON.macronutrients.carbs,
+            fat: {
+              total: foodJSON.macronutrients.fat.total,
+              saturated: foodJSON.macronutrients.fat.saturated,
+              unsaturated: foodJSON.macronutrients.fat.unsaturated,
             },
-            ingredients: foodJSON.ingredients,
-            allergens: foodJSON.allergens,
-          });
+            sugar: foodJSON.macronutrients.sugar,
+            sodium: foodJSON.macronutrients.sodium,
+          },
+          ingredients: foodJSON.ingredients,
+          allergens: foodJSON.allergens,
+        });
         try {
-            await newFood.save();
-            const foodId = newFood._id;
-            res.status(201).json({ foodId: foodId });
+          await newFood.save();
+          const foodId = newFood._id;
+          res.status(201).json({ foodId: foodId });
         } catch (error) {
-            return next(createError(401, error.message));
+          return next(createError(401, error.message));
         }
       } else {
         res.status(500).json({ error });
