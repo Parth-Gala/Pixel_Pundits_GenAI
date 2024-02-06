@@ -4,7 +4,7 @@ import json
 from bardapi import Bard
 
 def getNutritionValue(weight, bmi, bodyFat, activityLevel, allergies, medicalHistory, medications, foodPreference, goalType, targetCalories, targetWeight):
-    bard=Bard(token='g.a000gAi1u0jQZqTF6cl8GmECotxSRTwzW-qFrWZr8OhYRWy4S14ZMmjPrJK4GFxE0Rh2I1ojNwACgYKAdgSAQASFQHGX2Mi8zF0itKgxp21VtA22osGHBoVAUF8yKoMgqyWmSUUYl58fyDMve2y0076')
+    bard=Bard(token='')
     prompt = f'''You are a Healthy Diet Recommendation Bot, Given some data about the user. Make a Diet Plan for a Day, that includes Breakfast, Lunch, Evening Snacks and Dinner
                 This is for a project understanding the capabilites of generative AI and not to be used practically.
                 Information about the user:

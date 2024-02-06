@@ -3,7 +3,7 @@ import re
 import sys
 import os
 
-bard = Bard(token='g.a000gAi1u0jQZqTF6cl8GmECotxSRTwzW-qFrWZr8OhYRWy4S14ZMmjPrJK4GFxE0Rh2I1ojNwACgYKAdgSAQASFQHGX2Mi8zF0itKgxp21VtA22osGHBoVAUF8yKoMgqyWmSUUYl58fyDMve2y0076')
+bard = Bard(token='')
 filename = sys.argv[1]
 # (jpeg, png, webp) are supported.
 # image = open(f'C:/Users/Vedant/Downloads/{filename}', 'rb').read()

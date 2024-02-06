@@ -4,7 +4,7 @@ from bardapi import Bard
 
 
 def getNutritionValue(foodName, servingSize):
-    bard = Bard(token='g.a000gAi1u0jQZqTF6cl8GmECotxSRTwzW-qFrWZr8OhYRWy4S14ZMmjPrJK4GFxE0Rh2I1ojNwACgYKAdgSAQASFQHGX2Mi8zF0itKgxp21VtA22osGHBoVAUF8yKoMgqyWmSUUYl58fyDMve2y0076')
+    bard = Bard(token='')
     prompt = f'''For {foodName} food dish/item give me the following a single value of Nutritional Information STRICTLY NO RANGES ONLY SINGLE VALUE according to serving size {servingSize}: 
                 ## TABLE START
                 //Start directly from Calories (this is a comment dont include this in the answer)

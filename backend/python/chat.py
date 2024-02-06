@@ -15,7 +15,7 @@ def get_youtube_link(text):
         return None 
     
 def get_dish_name(text):
-    bard=Bard(token='g.a000gAi1u0jQZqTF6cl8GmECotxSRTwzW-qFrWZr8OhYRWy4S14ZMmjPrJK4GFxE0Rh2I1ojNwACgYKAdgSAQASFQHGX2Mi8zF0itKgxp21VtA22osGHBoVAUF8yKoMgqyWmSUUYl58fyDMve2y0076')
+    bard=Bard(token='')
     prompt = f'''Extract only the name of the food dish/item from the sentence given {text}'''
     result = bard.get_answer(prompt)['content']
     regex = r'\*\*(.*?)\*\*'
@@ -28,7 +28,7 @@ def get_dish_name(text):
 
 
 def getVideoInfo(foodName):
-    bard=Bard(token='g.a000gAi1u0jQZqTF6cl8GmECotxSRTwzW-qFrWZr8OhYRWy4S14ZMmjPrJK4GFxE0Rh2I1ojNwACgYKAdgSAQASFQHGX2Mi8zF0itKgxp21VtA22osGHBoVAUF8yKoMgqyWmSUUYl58fyDMve2y0076')
+    bard=Bard(token='')
     prompt = f'''Give me a best working youtube video which is accessible, for making a healthy version of {foodName} with a transcript or steps to prepare the dish. Also provide all steps taken in the video explaining the process to cook the recipe with measurements. If the dish is unhealthy in nature add within the steps a disclaimer that this dish is not healthy. When the transcript start add a ##STEPS START and when it ends add a ##STEPS END.'''
     result = bard.get_answer(prompt)['content']
 

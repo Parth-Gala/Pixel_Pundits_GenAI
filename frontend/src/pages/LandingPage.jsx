@@ -7,28 +7,18 @@ const LandingPage = () => {
   return (
     <div>
       <div>
-      
-        <div className=" grid grid-cols-1 sml:grid-cols-2 text-center items-center ">
+        <div className="mt-16 grid grid-cols-1 sml:grid-cols-2 text-center items-center ">
           <div>
             <img src={landingimg1} alt="" srcSet="" />
           </div>
           <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quos
-            doloremque ut omnis est quis, veniam minima quaerat ullam odit
-            tempore nihil, aperiam culpa. Ea voluptates labore nulla eveniet
-            facilis aperiam error quae magni maxime impedit non veniam incidunt
+            Unlock the power of smart nutrition with our AI-driven app,
+            delivering expertly crafted meal recommendations based on your
+            preferences, goals, and lifestyle
           </div>
           <div className="">
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              quos doloremque ut omnis est quis, veniam minima quaerat ullam
-              odit tempore nihil, aperiam culpa. Ea voluptates labore nulla
-              eveniet facilis aperiam error quae magni maxime impedit non veniam
-              incidunt
-            </div>
-            <div>
-              <img src={landingimg2} alt="" srcSet="" />
-            </div>
+            <div></div>
+            <div>{/* <img src={landingimg2} alt="" srcSet="" /> */}</div>
           </div>
         </div>
       </div>
