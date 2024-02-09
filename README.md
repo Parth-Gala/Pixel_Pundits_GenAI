@@ -44,14 +44,16 @@ npm start
 ```
 
 ## Glimpses of the Project:
-![Image 1](https://drive.google.com/file/d/1pEZ5LjC5tpqLi24N5qefT7woL8eWFPKl/view?usp=drive_link)
-![Image 2](https://drive.google.com/file/d/1cIpyk9ODJm6WSDd_Q5quGdDKqMLSIOqQ/view?usp=drive_link)
-![Image 3](https://drive.google.com/file/d/16T5idWe3vctWQg8060bSkYq5_9EnH47w/view?usp=drive_link)
-![Image 4](https://drive.google.com/file/d/1x8x6RqXi7oSkfTWLL7ANHoVxZ44AisNk/view?usp=drive_link)
-![Image 5](https://drive.google.com/file/d/1o8BsCNuM7FVegjRBO6n9CGn3IlcVhNfu/view?usp=drive_link)
-![Image 6](https://drive.google.com/file/d/1qChnd4Q9ctTLOkuNHb2MBIlgzcEbU4gI/view?usp=drive_link)
-![Image 7](https://drive.google.com/file/d/1Xc9LOOfbBbGwxFTnm2zMRjlLQ_fgWAdh/view?usp=drive_link)
-![Image 8](https://drive.google.com/file/d/1mtI07p5mgDIbsM6uC9VxzeiHq7ATwYRO/view?usp=drive_link)
+![dashbaord](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/e8c90519-e811-4bc5-9b15-84c4e9c94e6d)![home](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/ed2f8430-46ef-4dbd-9586-a7214f8abfba)
+![login](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/f5503ff2-cadc-4c0a-86d6-aac83034793a)
+![reciepe](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/e59d7613-52ad-4421-8560-61a423615fb3)
+![suggesteddiet](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/5a962c3d-37c5-43bd-81f7-936a2835480c)
+![uploadfood](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/138465b1-ea38-4b7c-b1a6-1137ada4b71e)![uploadfood2](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/99dcbb4f-c0a8-4f15-aadd-8724f13a6a34)
+![yourmeal](https://github.com/Parth-Gala/Pixel_Pundits_GenAI/assets/94597802/d0ee733b-81b5-4162-8418-817a28f47095)
+
+
+
+
 
 ## :book: Authors
 + [meetg21](https://github.com/meetg21)
